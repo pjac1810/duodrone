@@ -21,6 +21,16 @@ jobs:
         with:
           name: duodrone-fwsc
           path: build/*.fwsc
+      - name: Put the .fwsc on the firmware branch (a direct download)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          mkdir /tmp/fw && cp build/*.fwsc /tmp/fw/
+          cd /tmp/fw
+          git init -q -b firmware
+          git -c user.name=github-actions -c user.email=github-actions@users.noreply.github.com commit -q --allow-empty -m "firmware from ${GITHUB_SHA::7}"
+          git add -A
+          git -c user.name=github-actions -c user.email=github-actions@users.noreply.github.com commit -q -m "duodrone .fwsc from ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" firmware
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
         with:
