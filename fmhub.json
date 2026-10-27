@@ -1,0 +1,5 @@
+{
+  "what": "DUODRONE turns the FM-1 into a two-voice analogue-style drone synthesizer, after the Stylophone CPM DS-2 layout. Each DRONE voice has a morphing X-WAVE oscillator with a -1/-2 octave sub, a resonant LP/HP ladder filter and a saturating volume stage, with hard sync and pitch link between them. An ULTRA LFO with two outputs and 13 shapes, a dark PT2399-style delay and an 8-algorithm reverb complete the panel.",
+  "kinds": ["synth"],
+  "play": "https://pjac1810.github.io/duodrone/"
+}
