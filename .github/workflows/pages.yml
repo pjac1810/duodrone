@@ -33,6 +33,9 @@ jobs:
     needs: build
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    # Publishing needs Settings -> Pages -> Source: GitHub Actions. Until it is on, this job is
+    # allowed to fail without turning the run red: the firmware (.fwsc) comes from the build job.
+    continue-on-error: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
